@@ -4,7 +4,7 @@ import {v4 as uuidv4} from "uuid";
 
 interface IProps {
     headers: Array<{title: string}>,
-    onRemove: any
+    onRemove: boolean | undefined
 }
 
 const HeaderRow: React.FC<IProps> = ({headers, onRemove}) => {
@@ -16,7 +16,7 @@ const HeaderRow: React.FC<IProps> = ({headers, onRemove}) => {
                 ))
                     : null
             }
-            {onRemove && <TdDelete />}
+            {onRemove === true && <TdDelete />}
         </Th>
     );
 };

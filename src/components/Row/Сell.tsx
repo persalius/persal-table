@@ -1,16 +1,24 @@
 import React from "react";
 import TextareaAutosize from 'react-textarea-autosize';
 import {Td, TdDelete} from "../../styled/row";
-// Types
-import {cellType} from "../../types/table";
 
-type newCellType = cellType & {onEdit: boolean | undefined};
+interface IProps {
+    value: string | number | undefined,
+    onEdit: any,
+    rowIndex: number,
+    cellIndex: number
+}
 
-const Cell: React.FC<newCellType> = ({value, onEdit}) => {
+const Cell: React.FC<IProps> = ({value, onEdit, rowIndex, cellIndex}) => {
     return (
         //@ts-ignore
-        <Td isHover={onEdit}>
-            <TextareaAutosize defaultValue={value ? value.toString() : ""} readOnly={onEdit!==true} />
+        <Td isHover={!!onEdit}>
+            <TextareaAutosize
+                defaultValue={value ? value.toString() : ""}
+                readOnly={!onEdit}
+                //@ts-ignore
+                onKeyUp={(e: KeyboardEvent<HTMLTextAreaElement>) => onEdit(rowIndex, e.target.value, cellIndex)}
+            />
         </Td>
     );
 };

@@ -13,9 +13,22 @@ function App() {
         };
         getData().catch(() => console.log("Error loading data"));
     });
+
+    const addRow = () => {
+        console.log("Add new row");
+    };
+
+    const removeRow = (index) => {
+        console.log(index);
+    };
+
+    const editCell = (rowIndex, newText, cellIndex) => {
+        console.log(rowIndex, newText, cellIndex);
+    };
+
     return (
         <div className="App">
-            <Table data={data} onAdd onRemove onEdit />
+            <Table data={data} onAdd={addRow} onRemove={removeRow} onEdit={editCell} />
         </div>
     );
 }
