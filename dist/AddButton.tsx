@@ -2,7 +2,7 @@ import React from "react";
 import {Button} from "../styled/button";
 
 interface IProps {
-    addRow: () => void
+    addRow: () => void | boolean
 }
 
 const AddButton: React.FC<IProps> = ({addRow}) => {

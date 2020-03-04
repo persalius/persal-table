@@ -9,9 +9,9 @@ import {tableDataType1, tableDataType2, cellType} from "../types/table";
 
 interface IProps {
     data: tableDataType1 & tableDataType2,
-    onAdd?: boolean,
-    onRemove?: boolean,
-    onEdit?: boolean
+    onAdd?: ()=>void | boolean,
+    onRemove?: (index: number)=>void | boolean,
+    onEdit?: (rowIndex: number, newText: string, cellIndex: number)=>void | boolean
 }
 
 const Table: React.FC<IProps> = ({data, onAdd, onRemove, onEdit}) => {
@@ -28,6 +28,7 @@ const Table: React.FC<IProps> = ({data, onAdd, onRemove, onEdit}) => {
 
     // ========== ADD NEW ROW ==========
     const addNewRow = useCallback(() => {
+        if (onAdd instanceof Function) onAdd();
         if (tableData.rows) {
             const newRow: Array<cellType> = [];
             for (let i = 0; i < rowLength; i++) {
@@ -43,11 +44,12 @@ const Table: React.FC<IProps> = ({data, onAdd, onRemove, onEdit}) => {
             setTableData([...tableData, newRow]);
         }
 
-        },[tableData, rowLength]
+        },[tableData, rowLength, onAdd]
     );
 
     // ========== DELETE ROW ==========
     const deleteRow = useCallback((index) => {
+        if (onRemove instanceof Function) onRemove(index);
         if (tableData.rows) {
             const newData = tableData;
             newData.rows.splice(index, 1);
@@ -59,9 +61,14 @@ const Table: React.FC<IProps> = ({data, onAdd, onRemove, onEdit}) => {
         }
         }, [tableData]);
 
+    // ========== EDIT CELL ==========
+    const editCell = useCallback((rowIndex, newText, cellIndex) => {
+        if (onEdit instanceof Function) onEdit(rowIndex, newText, cellIndex);
+    }, [onEdit]);
+
     return (
         <TableBlock>
-            {onAdd === true && tableData && <AddButton addRow={addNewRow} />}
+            {onAdd && tableData && <AddButton addRow={addNewRow} />}
 
             {
                 tableData && tableData.header ? <HeaderRow headers={tableData.header} onRemove={onRemove} /> : null
@@ -72,7 +79,7 @@ const Table: React.FC<IProps> = ({data, onAdd, onRemove, onEdit}) => {
                     data={tableData}
                     deleteRow={deleteRow}
                     onRemove={onRemove}
-                    onEdit={onEdit}
+                    onEdit={onEdit instanceof Function ? editCell : onEdit}
                 />
                 : <Preloader
                 />}

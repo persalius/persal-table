@@ -10,8 +10,8 @@ interface IProps {
         rows?: rowsType
     } & tableDataType2,
     deleteRow: (index: number) => void,
-    onRemove: boolean | undefined,
-    onEdit: boolean | undefined
+    onRemove: any,
+    onEdit: any
 }
 
 const Row: React.FC<IProps> = ({data, deleteRow, onRemove, onEdit}) => {
@@ -23,10 +23,10 @@ const Row: React.FC<IProps> = ({data, deleteRow, onRemove, onEdit}) => {
                     <Tr key={uuidv4()}>
                         {
                             row.map((item, j) => (
-                                <Cell key={uuidv4()} value={item.value} onEdit={onEdit} />
+                                <Cell key={uuidv4()} value={item.value} onEdit={onEdit} rowIndex={i} cellIndex={j} />
                             ))
                         }
-                        {onRemove === true && <CellDelete deleteRow={deleteRow} index={i} />}
+                        {onRemove && <CellDelete deleteRow={deleteRow} index={i} />}
                     </Tr>
                 )) :
 
@@ -35,7 +35,7 @@ const Row: React.FC<IProps> = ({data, deleteRow, onRemove, onEdit}) => {
                     <Tr key={uuidv4()}>
                         {
                             element.map((item, j) => (
-                                <Cell key={uuidv4()} value={item} onEdit={onEdit} />
+                                <Cell key={uuidv4()} value={item} onEdit={onEdit} rowIndex={i} cellIndex={j}  />
                             ))
                         }
                         <CellDelete deleteRow={deleteRow} index={i} />
