@@ -1,20 +1,37 @@
 {
-  "name": "table",
+  "name": "persal-table",
+  "description": "React component for building a table",
+  "author": "Sergey",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "babel": {
+    "plugins": [
+      "babel-plugin-styled-components"
+    ],
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/react-textarea-autosize": "^4.3.5",
+    "@types/styled-components": "^5.0.1",
+    "@types/uuid": "^7.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "react-textarea-autosize": "^7.1.2",
+    "styled-components": "^5.0.1",
+    "uuid": "^7.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "rd /s dist && mkdir dist &&  babel src/components -d dist --copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +47,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "babel-plugin-styled-components": "^1.10.7",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3"
   }
 }

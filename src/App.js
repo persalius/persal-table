@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import Table from "./components/Table";
+import {data_one, data_two} from "./data";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        async function getData() {
+            await setTimeout(() => {
+                setData(data_two);
+            }, 2000);
+        };
+        getData().catch(() => console.log("Error loading data"));
+    });
+    return (
+        <div className="App">
+            <Table data={data} onAdd onRemove onEdit />
+        </div>
+    );
 }
 
 export default App;
