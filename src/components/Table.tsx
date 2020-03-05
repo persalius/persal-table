@@ -59,7 +59,7 @@ const Table: React.FC<IProps> = ({data, onAdd, onRemove, onEdit}) => {
             newData.splice(index, 1);
             setTableData([...newData]);
         }
-        }, [tableData]);
+        }, [tableData, onRemove]);
 
     // ========== EDIT CELL ==========
     const editCell = useCallback((rowIndex, newText, cellIndex) => {
