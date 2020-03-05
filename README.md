@@ -1,9 +1,9 @@
-##Persal Table for React.js 
-###Install
+## Persal Table for React.js 
+### Install
 ```
 npm i persal-table
 ```
-###Usage
+### Usage
 ```
 import Table from "persal-table";
 ...
@@ -11,7 +11,7 @@ import Table from "persal-table";
 ```
 Data transferred to the table in form of props, which are mandatory.
 Table data is described using an array (example 1) or object (example 2):
-####example 1
+#### example 1
 
 ```
 const data = [
@@ -21,7 +21,7 @@ const data = [
     ['cell1', 'cell2', 'cell3', 'cell4'],
 ];
 ```
-####example 2
+#### example 2
 ```
 const data = {
     header: [
@@ -57,25 +57,25 @@ const data = {
 };
 ```
 
-###Props
-#####Table accepts 4 props:
+### Props
+##### Table accepts 4 props:
     1. data - table date. Mandatory prop
     2. onAdd - after adding this props into the table, button will show up that will allow you add new rows to the table. Type - boolean | Function
     3. onRemove - after adding this props each row will feature with button, clicking on which you will be able to remove the corresponding row. Type - boolean | Function
     4. onEdit - after adding this props you will be able to edit each cell. Type - boolean | Function
     
-    Пропсы onAdd, onRemove, onEdit принимают значения 2 типов: boolean or Function
-    1. Для пропса onAdd функция в качетсве аргумента ничего не получит
-    2. Для пропса onRemove функция в качестве аргумента получит инлекс удаленной строки
-    3. Для пропса onEdit функция в качестве аргументов получит 3 значения:
-        1 аргумент - индекс строки
-        2 аргумент - новое значение ячейки
-        3 аргумент - индекс ячейки
-######Example without functions
+    Props onAdd, onRemove, onEdit accept values of two types: boolean or Function
+    1. For onAdd props, function as won't accept anything as argument
+    2. For onRemove props, function will accept index of deleted row as argument
+    3. For onEdit props, function will accept the following three values as arguments:
+        1st argument - row index
+        2nd argument - new cell value
+        3rd argument - cell index
+##### Example without functions
 ```
 <Table data={data} onAdd onRemove onEdit />
 ```
-######Example with functions
+##### Example with functions
 ```
 const addRow = () => {
     console.log("Add new row");
