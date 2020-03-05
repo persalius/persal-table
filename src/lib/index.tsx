@@ -1,11 +1,11 @@
 import React, {useEffect, useState, useCallback} from "react";
-import {TableBlock} from "../styled/tableBlock";
-import HeaderRow from "./HeaderRow";
-import Row from "./Row";
-import Preloader from "./Preloader";
-import AddButton from "./AddButton";
+import {TableBlock} from "./styled/tableBlock";
+import HeaderRow from "./components/HeaderRow";
+import Row from "./components/Row";
+import Preloader from "./components/Preloader";
+import AddButton from "./components/AddButton";
 // Types
-import {tableDataType1, tableDataType2, cellType} from "../types/table";
+import {tableDataType1, tableDataType2, cellType} from "./types/table";
 
 interface IProps {
     data: tableDataType1 & tableDataType2,

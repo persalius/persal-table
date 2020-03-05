@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Table from "./components/Table";
+import Table from "./lib";
 import {data_one, data_two} from "./data";
 
 function App() {

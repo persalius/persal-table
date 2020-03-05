@@ -4,6 +4,13 @@
   "author": "Sergey",
   "version": "0.7.0",
   "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [ "dist", "README.md" ],
+  "repository": {
+    "type": "git",
+    "url": "https://www.npmjs.com/package/persal-table"
+  },
   "babel": {
     "plugins": [
       "babel-plugin-styled-components"
@@ -19,19 +26,15 @@
     "@types/react-textarea-autosize": "^4.3.5",
     "@types/styled-components": "^5.0.1",
     "@types/uuid": "^7.0.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0",
     "react-textarea-autosize": "^7.1.2",
     "styled-components": "^5.0.1",
     "uuid": "^7.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rd /s dist && mkdir dist && babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "publish:npm": "rd /s dist && mkdir dist &&  babel src/components -d dist --copy-files"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,6 +52,9 @@
     ]
   },
   "devDependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-scripts": "3.4.0",
     "@babel/cli": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
     "@types/react": "^16.9.23",
