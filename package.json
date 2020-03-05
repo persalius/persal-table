@@ -2,10 +2,9 @@
   "name": "persal-table",
   "description": "React component for building a table",
   "author": "Sergey",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/index.tsx",
   "files": [ "dist", "README.md" ],
   "repository": {
     "type": "git",
@@ -18,6 +17,10 @@
     "presets": [
       "@babel/preset-react"
     ]
+  },
+  "peerDependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -32,7 +35,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rd /s dist && mkdir dist && babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "build": "del /s dist && mkdir dist && babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
