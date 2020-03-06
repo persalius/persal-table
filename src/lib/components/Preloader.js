@@ -62,7 +62,7 @@ const Loading = styled.div`
 `;
 
 
-const Preloader: React.FC = () => {
+const Preloader = () => {
     return (
         <Wrapper>
             <Loading>

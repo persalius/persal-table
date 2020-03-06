@@ -2,19 +2,9 @@ import React from "react";
 import {Tr} from "../../styled/row";
 import Cell, {CellDelete} from "./Сell";
 import { v4 as uuidv4 } from 'uuid';
-// Types
-import {rowsType, tableDataType2} from "../../types/table";
 
-interface IProps {
-    data: {
-        rows?: rowsType
-    } & tableDataType2,
-    deleteRow: (index: number) => void,
-    onRemove: any,
-    onEdit: any
-}
 
-const Row: React.FC<IProps> = ({data, deleteRow, onRemove, onEdit}) => {
+const Row = ({data, deleteRow, onRemove, onEdit}) => {
     return (
         <>
             {

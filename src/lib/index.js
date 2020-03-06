@@ -4,19 +4,10 @@ import HeaderRow from "./components/HeaderRow";
 import Row from "./components/Row";
 import Preloader from "./components/Preloader";
 import AddButton from "./components/AddButton";
-// Types
-import {tableDataType1, tableDataType2, cellType} from "./types/table";
 
-interface IProps {
-    data: tableDataType1 & tableDataType2,
-    onAdd?: ()=>void | boolean,
-    onRemove?: (index: number)=>void | boolean,
-    onEdit?: (rowIndex: number, newText: string, cellIndex: number)=>void | boolean
-}
-
-const Table: React.FC<IProps> = ({data, onAdd, onRemove, onEdit}) => {
-    const [tableData, setTableData] = useState<any>(null);
-    const [rowLength, setRowLength] = useState<number>(0);
+const Table = ({data, onAdd, onRemove, onEdit}) => {
+    const [tableData, setTableData] = useState(null);
+    const [rowLength, setRowLength] = useState(0);
 
     useEffect(() => {
         setTableData(data);
@@ -30,14 +21,14 @@ const Table: React.FC<IProps> = ({data, onAdd, onRemove, onEdit}) => {
     const addNewRow = useCallback(() => {
         if (onAdd instanceof Function) onAdd();
         if (tableData.rows) {
-            const newRow: Array<cellType> = [];
+            const newRow = [];
             for (let i = 0; i < rowLength; i++) {
                 newRow.push({value: ""});
             }
             const rows = [...tableData.rows, newRow];
             setTableData({...tableData, rows});
         } else {
-            const newRow: Array<string> = [];
+            const newRow = [];
             for (let i = 0; i < rowLength; i++) {
                 newRow.push("");
             }
