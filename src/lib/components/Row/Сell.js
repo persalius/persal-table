@@ -10,7 +10,7 @@ const Cell = ({value, onEdit, rowIndex, cellIndex}) => {
                 defaultValue={value ? value.toString() : ""}
                 readOnly={!onEdit}
                 //@ts-ignore
-                onKeyUp={e => onEdit(rowIndex, e.target.value, cellIndex)}
+                onKeyUp={typeof onEdit === "function" ? (e => onEdit(rowIndex, e.target.value, cellIndex)) : null}
             />
         </Td>
     );
