@@ -17,7 +17,7 @@ const Cell: React.FC<IProps> = ({value, onEdit, rowIndex, cellIndex}) => {
                 defaultValue={value ? value.toString() : ""}
                 readOnly={!onEdit}
                 //@ts-ignore
-                onKeyUp={(e: KeyboardEvent<HTMLTextAreaElement>) => onEdit(rowIndex, e.target.value, cellIndex)}
+                onKeyUp={typeof onEdit === "function" ? ((e: KeyboardEvent<HTMLTextAreaElement>) => onEdit(rowIndex, e.target.value, cellIndex)) : null}
             />
         </Td>
     );
