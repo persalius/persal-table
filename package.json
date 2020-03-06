@@ -2,7 +2,7 @@
   "name": "persal-table",
   "description": "React component for building a table",
   "author": "Sergey",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "private": false,
   "main": "dist/index.js",
   "files": [
